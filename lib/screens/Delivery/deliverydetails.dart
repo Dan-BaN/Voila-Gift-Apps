@@ -1,4 +1,5 @@
 import 'package:VoilaGiftApp/screens/Delivery/dateandtime.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:VoilaGiftApp/screens/Delivery/orderconfirm.dart';
 import 'package:VoilaGiftApp/screens/Delivery/deliverydetails.dart';
@@ -19,13 +20,20 @@ class MyApp extends StatelessWidget {
 class signUpPage extends StatefulWidget {
   @override
   _signUpPageState createState() => _signUpPageState();
+
 }
 
 class _signUpPageState extends State<signUpPage> {
+  final name = TextEditingController();
+  final number = TextEditingController();
+  final address = TextEditingController();
+  final notes = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,23 +66,31 @@ class _signUpPageState extends State<signUpPage> {
                       fontFamily: 'sfpro'
                   ),),
                   SizedBox(height: 10,),
+
                   TextField(
+                    controller: name,
                     decoration: InputDecoration(
                       labelText: "Name",
+
                     ),
+                    
                   ),
+
                   TextField(
+                    controller: number,
                     decoration: InputDecoration(
                       labelText: "Phone Number",
                     ),
                   ),
                   TextField(
+                    controller: address,
                     decoration: InputDecoration(
                       labelText: "Address",
                     ),
                   ),
                   SizedBox(height: 40,),
                   TextField(
+                    controller: notes,
                     decoration: InputDecoration(
                       labelText: "Any Notes",
                     ),
@@ -119,6 +135,17 @@ class _signUpPageState extends State<signUpPage> {
   }
   void openSignPage()
   {
+    Firestore.instance.collection('DeliveryDetails').add({
+      'name': name.text,
+      'number' : number.text,
+      'address' : address.text,
+      'notes' : notes.text,
+    }).then((_) {
+      Scaffold.of(context).showSnackBar(
+          SnackBar(content: Text('Successfully Added')));
+      name.clear();
+
+    });
     Navigator.push(context, MaterialPageRoute(builder: (context)=>custform()));
   }
 }
