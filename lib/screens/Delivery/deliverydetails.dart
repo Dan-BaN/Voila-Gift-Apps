@@ -147,6 +147,6 @@ class _signUpPageState extends State<signUpPage> {
       name.clear();
 
     });
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>Orderconfirm()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>custform()));
   }
 }
