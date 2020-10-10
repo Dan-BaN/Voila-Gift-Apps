@@ -1,3 +1,4 @@
+import 'package:VoilaGiftApp/screens/Delivery/MyHomePage.dart';
 import 'package:VoilaGiftApp/screens/Delivery/dateandtime.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,9 @@ class _signUpPageState extends State<signUpPage> {
               height: 70,
               width: 70,
               decoration: BoxDecoration(
-                  image: DecorationImage(
+                  /*image: DecorationImage(
                       image: AssetImage('asset/images/logo.png')
-                  )
+                  )*/
               ),
             ),
             Expanded(
@@ -146,6 +147,6 @@ class _signUpPageState extends State<signUpPage> {
       name.clear();
 
     });
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>custform()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>Orderconfirm()));
   }
 }

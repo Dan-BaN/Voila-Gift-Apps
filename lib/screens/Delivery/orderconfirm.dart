@@ -1,7 +1,5 @@
 import 'package:VoilaGiftApp/screens/Delivery/trackorder.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_app2/trackorder.dart';
-import 'package:VoilaGiftApp/screens/Delivery/dateandtime.dart';
 class Orderconfirm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
